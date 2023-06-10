@@ -18,4 +18,41 @@ Warehouse for submitting tasks in OpenMMLabCamp
 气球数据集可以直接下载 https://download.openmmlab.com/mmyolo/data/balloon_dataset.zip
 
 
+1、处理生成coco的json
+
+[balloon_train.json](./balloon_train.json)
+
+[balloon_val.json](./balloon_val.json)
+
+2、自定义配置文件
+
+[rtmdet_tiny_1xb12-40e_balloon.py](./rtmdet_tiny_1xb12-40e_balloon.py)
+
+3、训练前可视化
+
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/2b6e8353-dec3-4034-af58-d4562bea7f36)
+
+4、模型训练
+```
+!python tools/train.py rtmdet_tiny_1xb12-40e_balloon.py
+```
+5、训练结果：
+
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/26142134-2e03-41d5-8ab2-e55b24b951a6)
+
+6、val集预测可视化：
+
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/d1b30522-b72b-4187-ab9a-02d47f6b5497)
+
+7、网络气球图像预测：
+
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/8d9d7807-e991-48db-85df-1802c9d754d7)
+
+8、特征图可视化：
+
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/9fe04912-a884-4943-943a-72cfa481582e)
+
+9、Box AM可视化：
+
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/b13925ac-d1ec-4dfb-b11a-042de58337b0)
 

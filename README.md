@@ -8,4 +8,4 @@ Warehouse for submitting tasks in OpenMMLabCamp
 [题目：基于ResNet50的水果分类](./作业2基于ResNet50的水果分类/README.md)
 
 作业3:
-[作业3基于RTMDet的气球检测](./作业3基于RTMDet的气球检测/README.md)
+[题目：基于RTMDet的气球检测](./作业3基于RTMDet的气球检测/README.md)

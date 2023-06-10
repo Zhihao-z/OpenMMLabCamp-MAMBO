@@ -16,11 +16,14 @@ Warehouse for submitting tasks in OpenMMLabCamp
 需提交的测试集评估指标（不能低于baseline指标的50%）
 
 mmdet结果：
+
 ![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/301f6ac4-8837-42bb-bd4c-814d4a9ee0a0)
 
 mmpose结果：
+
 ![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/e99c58bb-df87-44cb-807d-8c7537813862)
 
 可视化图：
+
 ![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/2eb6cc0a-3495-4c5c-876a-bed015dffc71)
 

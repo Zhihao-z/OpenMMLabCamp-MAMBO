@@ -16,3 +16,7 @@ Warehouse for submitting tasks in OpenMMLabCamp
 作业4:
 
 [题目:基于MMSeg的西瓜分割](./作业4基于MMSeg的西瓜分割/README.md)
+
+作业5:
+
+[题目:作业5ControlNet的N种玩法](./作业5ControlNet的N种玩法/README.md)

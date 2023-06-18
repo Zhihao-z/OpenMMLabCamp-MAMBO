@@ -1,58 +1,67 @@
-OpenMMLabCamp-MAMBO
-Warehouse for submitting tasks in OpenMMLabCamp
-
-作业：基于 RTMDet 的气球检测
-
-背景：熟悉目标检测和 MMDetection 常用自定义流程。
-
-任务：
-
-基于提供的 notebook，将 cat 数据集换成气球数据集
-按照视频中 notebook 步骤，可视化数据集和标签
-使用MMDetection算法库，训练 RTMDet 气球目标检测算法，可以适当调参，提交测试集评估指标
-用网上下载的任意包括气球的图片进行预测，将预测结果发到群里
-按照视频中 notebook 步骤，对 demo 图片进行特征图可视化和 Box AM 可视化，将结果发到群里
-需提交的测试集评估指标（不能低于baseline指标的50%）
-目标检测 RTMDet-tiny 模型结果的 mAP 不低于 65
-数据集
-气球数据集可以直接下载 https://download.openmmlab.com/mmyolo/data/balloon_dataset.zip
+作业：
+MMSeg 语义分割
+背景：
+西瓜瓤、西瓜皮、西瓜籽像素级语义分割
+TO DO LIST：
+Labelme 标注语义分割数据集（子豪兄已经帮你完成了）；
+划分训练集和测试集（子豪兄已经帮你完成了）；
+Labelme 标注转 Mask 灰度图格式（子豪兄已经帮你完成了）；
+使用 MMSegmentation 算法库，撰写 config 配置文件，训练 PSPNet 语义分割算法；
+提交测试集评估指标；
+自己拍摄西瓜图片和视频，将预测结果发到群里；
+（选做）训练 Segformer 语义分割算法，提交测试集评估指标。
 
 
-1、处理生成coco的json
-
-[balloon_train.json](./balloon_train.json)
-
-[balloon_val.json](./balloon_val.json)
-
-2、自定义配置文件
-
-[rtmdet_tiny_1xb12-40e_balloon.py](./rtmdet_tiny_1xb12-40e_balloon.py)
-
-3、训练前可视化
-
-![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/2b6e8353-dec3-4034-af58-d4562bea7f36)
-
-4、模型训练
+改数据集配置文件,放到mmseg/datasets下面：
+watermelon.py
 ```
-!python tools/train.py rtmdet_tiny_1xb12-40e_balloon.py
+# 参考cityscapes.py格式
+
+# Copyright (c) OpenMMLab. All rights reserved.
+from mmseg.registry import DATASETS
+from .basesegdataset import BaseSegDataset
+
+
+@DATASETS.register_module()
+class WatermelonDataset(BaseSegDataset):
+    """Watermelon dataset.
+
+    The ``img_suffix`` is fixed to '.jpg' and ``seg_map_suffix`` is
+    fixed to '.png' for Watermelon dataset.
+    """
+    METAINFO = dict(
+        classes=('red', 'green', 'white', 'seed-black', 'seed-white', 'Unlabeled'),
+        palette=[[128, 64, 128], [244, 35, 232], [70, 70, 70], [102, 102, 156],
+                 [190, 153, 153], [153, 153, 153]])
+
+    def __init__(self,
+                 img_suffix='.jpg',
+                 seg_map_suffix='.png',
+                 **kwargs) -> None:
+        super().__init__(
+            img_suffix=img_suffix, seg_map_suffix=seg_map_suffix, **kwargs)
 ```
-5、训练结果：
 
-![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/26142134-2e03-41d5-8ab2-e55b24b951a6)
+撰写 config 配置文件：
+pspnet-watermelon.py
 
-6、val集预测可视化：
+模型训练：
 
-![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/d1b30522-b72b-4187-ab9a-02d47f6b5497)
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/be673cb5-aa5e-4761-800d-f5124de5fed0)
 
-7、网络气球图像预测：
 
-![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/8d9d7807-e991-48db-85df-1802c9d754d7)
+训练结果：
 
-8、特征图可视化：
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/80707dda-362b-497a-871a-10b984964c61)
 
-![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/9fe04912-a884-4943-943a-72cfa481582e)
+原图：
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/351d32bc-521c-43c6-9e77-fbf53c6747a5)
 
-9、Box AM可视化：
 
-![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/b13925ac-d1ec-4dfb-b11a-042de58337b0)
+可视化：
+![image](https://github.com/MAMOB/OpenMMLabCamp-MAMBO/assets/42363751/7291c30b-cc2e-4695-a2f4-73eea88b447d)
+
+
+
+
 

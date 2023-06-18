@@ -12,3 +12,7 @@ Warehouse for submitting tasks in OpenMMLabCamp
 作业3:
 
 [题目:基于RTMDet的气球检测](./作业3基于RTMDet的气球检测/README.md)
+
+作业4:
+
+[题目:基于MMSeg的西瓜分割](./作业4基于MMSeg的西瓜分割/README.md)
